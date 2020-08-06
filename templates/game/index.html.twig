@@ -1,7 +1,37 @@
 {% extends 'base.html.twig' %}
+{% macro displayAnswers(answers, question_id) %}
+    <ul id="{{question_id}}" class="list-group">
+        {% for answer in answers %}
+            <li class="list-group-item">
+                {{answer}}
+                <input class="float-right question_{{question_id}}"
+                    onclick="selectOne('{{question_id}}', this);" type="checkbox">
+            </li>
+        {% endfor %}
+    </ul>    
+{% endmacro %}
+{% macro iterate(results) %}
+    {% set question_id = 1 %}
+    {% for result in results %}
+        {% set answers = result.incorrect_answers|merge([result.correct_answer])  %}
+        <div class="card m-2">
+            <div class="card-body">
+                <p class="h-4">
+                {{result.question|corrector}}
+                </p>
+                {{_self.displayAnswers(answers, question_id)}}
+            </div>
+        </div>
+        {% set question_id = question_id + 1 %}
+    {% endfor %}
+{% endmacro %}
 
 {% block title %}Trivial{% endblock %}
 
 {% block body %}
+{{_self.iterate(results)}}
+{% endblock %}
 
+{% block javascripts %}
+    <script src="{{asset('/js/checkbox-controls.js')}}"></script>
 {% endblock %}
