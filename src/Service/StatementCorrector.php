@@ -22,12 +22,15 @@ class StatementCorrector extends AbstractExtension
         $apostrophe = '&#039;';
         $apostrophe_1 = '&rsquo;';
         $e_accent = '&eacute;';
+        $e_house = '&ecirc;';
         $ampersand = '&amp;';
         $string = str_replace($quote, '"', $string);
         $string = str_replace($apostrophe, "'", $string);
         $string = str_replace($apostrophe_1, "'", $string);
         $string = str_replace($e_accent, "é", $string);
+        $string = str_replace($e_house, "ê", $string);
         $string = str_replace($ampersand, "&", $string);
+
         return $string;
     }
 }
