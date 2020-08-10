@@ -3,7 +3,7 @@
     <ul id="{{question_id}}" class="list-group">
         {% for answer in answers %}
             <li class="list-group-item">
-                {{answer}}
+                <span>{{answer}}</span>
                 <input class="float-right question_{{question_id}}"
                     onclick="selectOne('{{question_id}}', this);" type="checkbox">
             </li>
@@ -14,7 +14,7 @@
     {% set question_id = 1 %}
     {% for result in results %}
         {% set answers = result.incorrect_answers|merge([result.correct_answer])  %}
-        <div class="card m-2">
+        <div id="block_{{question_id}}" class="d-none card m-2">
             <div class="card-body">
                 <p class="h-4">
                 {{result.question|corrector}}
@@ -24,14 +24,31 @@
         </div>
         {% set question_id = question_id + 1 %}
     {% endfor %}
+
+    <div class="mt-4 float-right">
+        <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-primary">prev</button>
+        <button id="submit" class="btn btn-outline-primary">submit</button>
+        <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-primary">next</button>
+    </div>
+{% endmacro %}
+
+{% macro pickAllCorrectAnswers(results) %}
+    {% set answerIdCounter = 1 %}
+    {% for result in results %}
+        <input id="answer_{{answerIdCounter}}" value="{{result.correct_answer}}"
+            type="hidden">
+        {% set answerIdCounter = answerIdCounter + 1 %}
+    {% endfor %}
 {% endmacro %}
 
 {% block title %}Trivial{% endblock %}
 
 {% block body %}
 {{_self.iterate(results)}}
+{{_self.pickAllCorrectAnswers(results)}}
 {% endblock %}
 
 {% block javascripts %}
     <script src="{{asset('/js/checkbox-controls.js')}}"></script>
+    <script src="{{asset('/js/test-slide.js')}}"></script>
 {% endblock %}
