@@ -13,14 +13,13 @@
     </head>
     <body>
         <div class="container">
-        <!-- Image and text -->
-        <nav class="navbar">
-            <a class="navbar-brand" href="#">
-                🤔
-                Trivial
-            </a>
-        </nav>
-        {% block body %}{% endblock %}
+            <nav class="navbar">
+                <a class="navbar-brand text-white" href="{{path('index')}}">
+                    🤔
+                    Trivial
+                </a>
+            </nav>
+            {% block body %}{% endblock %}
         </div>
         {% block javascripts %}{% endblock %}
     </body>

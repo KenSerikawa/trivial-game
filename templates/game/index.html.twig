@@ -14,9 +14,9 @@
     {% set question_id = 1 %}
     {% for result in results %}
         {% set answers = result.incorrect_answers|merge([result.correct_answer])  %}
-        <div id="block_{{question_id}}" class="d-none card m-2">
-            <div class="card-body">
-                <p class="h-4">
+        <div id="block_{{question_id}}" class="d-none m-2">
+            <div class="">
+                <p class="h-4 text-white">
                 {{result.question|corrector}}
                 </p>
                 {{_self.displayAnswers(answers, question_id)}}
@@ -27,7 +27,7 @@
 
     <div class="mt-4 float-right">
         <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-primary">prev</button>
-        <button id="submit" class="btn btn-outline-primary">submit</button>
+        <button id="submit" class="btn btn-outline-success">submit</button>
         <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-primary">next</button>
     </div>
 {% endmacro %}

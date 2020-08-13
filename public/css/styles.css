@@ -1,3 +1,11 @@
+html, body {
+    height: 100%;
+    width: 100%;
+}
+body {
+    background-color: #333333 !important;
+}
+
 input[type=checkbox] {
     width: 30px; 
     height: 30px;
