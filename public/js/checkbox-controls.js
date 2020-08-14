@@ -1,8 +1,7 @@
 function selectOne(id, element) {
     let optionsList = $('#' + id)[0]
     let options = optionsList.children
-    if(hasAnyChecked(options, element)) {
-    }
+    hasAnyChecked(options, element)
 }
 
 function hasAnyChecked(options, elementChecked) {   
@@ -12,4 +11,10 @@ function hasAnyChecked(options, elementChecked) {
             element.checked = false
         }
     }
+}
+
+function checkOne(id, element) {
+    let checkbox = element.children[1]
+    checkbox.checked = true
+    selectOne(id, checkbox)
 }

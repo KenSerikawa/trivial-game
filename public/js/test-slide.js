@@ -32,6 +32,7 @@ function previousQuestion() {
     nextQuestion.classList.add('d-block')
 
     toggleButtons(nextBlockId)
+
 }
 
 function nextQuestion() {
@@ -57,8 +58,9 @@ function toggleButtons(id) {
     let prev = document.getElementById('previousQuestion')
     let next = document.getElementById('nextQuestion')
     let submit = document.getElementById('submit')
-
-    if(integer <= 2) {
+    if(integer < 2) {
+        prev.style.display = 'none'
+    } else if(integer <= 2) {
         prev.style.display = ''
     } else if(integer > 9) {
         next.style.display = 'none'

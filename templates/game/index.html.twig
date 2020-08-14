@@ -2,7 +2,7 @@
 {% macro displayAnswers(answers, question_id) %}
     <ul id="{{question_id}}" class="list-group">
         {% for answer in answers %}
-            <li class="list-group-item ">
+            <li class="list-group-item" onclick="checkOne('{{question_id}}', this)">
                 <span>{{answer}}</span>
                 <input class="float-right question_{{question_id}}"
                     onclick="selectOne('{{question_id}}', this);" type="checkbox">
@@ -44,8 +44,10 @@
 {% block title %}Trivial{% endblock %}
 
 {% block body %}
-{{_self.iterate(results)}}
-{{_self.pickAllCorrectAnswers(results)}}
+<div class="container align-middle my-auto">
+    {{_self.iterate(results)}}
+    {{_self.pickAllCorrectAnswers(results)}}
+</div>
 {% endblock %}
 
 {% block javascripts %}
