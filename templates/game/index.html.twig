@@ -2,7 +2,7 @@
 {% macro displayAnswers(answers, question_id) %}
     <ul id="{{question_id}}" class="list-group">
         {% for answer in answers %}
-            <li class="list-group-item">
+            <li class="list-group-item ">
                 <span>{{answer}}</span>
                 <input class="float-right question_{{question_id}}"
                     onclick="selectOne('{{question_id}}', this);" type="checkbox">
@@ -26,9 +26,9 @@
     {% endfor %}
 
     <div class="mt-4 float-right">
-        <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-primary">prev</button>
-        <button id="submit" class="btn btn-outline-success">submit</button>
-        <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-primary">next</button>
+        <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-secondary">prev</button>
+        <button id="submit" class="btn btn-outline-secondary">submit</button>
+        <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-secondary">next</button>
     </div>
 {% endmacro %}
 

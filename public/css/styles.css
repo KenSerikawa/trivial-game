@@ -2,11 +2,22 @@ html, body {
     height: 100%;
     width: 100%;
 }
-body {
+body, li {
     background-color: #333333 !important;
+    color: white;
+}
+
+.list-group-item {
+    border: 0px solid rgba(0,0,0,.125)!important;
+}
+
+.list-group-item:hover {
+    background-color:  white !important;
+    color: #333333;
+    border-radius: 5px;
 }
 
 input[type=checkbox] {
-    width: 30px; 
-    height: 30px;
+    width: 25px; 
+    height: 25px;
 }
