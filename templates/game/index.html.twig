@@ -15,8 +15,8 @@
     {% for result in results %}
         {% set answers = result.incorrect_answers|merge([result.correct_answer])  %}
         <div id="block_{{question_id}}" class="d-none m-2">
-            <div class="">
-                <p class="h-4 text-white">
+            <div class="border rounded p-3">
+                <p class="h4 text-white mb-3">
                 {{result.question|corrector}}
                 </p>
                 {{_self.displayAnswers(answers, question_id)}}
@@ -27,7 +27,7 @@
 
     <div class="mt-4 float-right">
         <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-secondary">prev</button>
-        <button id="submit" class="btn btn-outline-secondary">submit</button>
+        <button id="submit" onclick="submitTest()" class="btn btn-outline-secondary">submit</button>
         <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-secondary">next</button>
     </div>
 {% endmacro %}
@@ -44,7 +44,7 @@
 {% block title %}Trivial{% endblock %}
 
 {% block body %}
-<div class="container align-middle my-auto">
+<div class="mt-5 pt-5">
     {{_self.iterate(results)}}
     {{_self.pickAllCorrectAnswers(results)}}
 </div>
@@ -53,4 +53,5 @@
 {% block javascripts %}
     <script src="{{asset('/js/checkbox-controls.js')}}"></script>
     <script src="{{asset('/js/test-slide.js')}}"></script>
+    <script src="{{asset('/js/test-submit.js')}}"></script>
 {% endblock %}
