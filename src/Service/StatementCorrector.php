@@ -18,7 +18,7 @@ class StatementCorrector extends AbstractExtension
 
     public function formatString(string $string)
     {
-        $string = html_entity_decode($string);
-        return $string;
+        return  html_entity_decode($string, ENT_COMPAT, 'UTF-8');
     }
 }
+  
