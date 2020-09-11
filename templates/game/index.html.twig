@@ -25,10 +25,16 @@
         {% set question_id = question_id + 1 %}
     {% endfor %}
 
-    <div class="mt-4 float-right">
-        <button id="previousQuestion" onclick="previousQuestion()" class="btn btn-outline-secondary">prev</button>
-        <button id="submit" onclick="submitTest()" class="btn btn-outline-secondary">submit</button>
-        <button id="nextQuestion" onclick="nextQuestion()" class="btn btn-outline-secondary">next</button>
+    <div class="mt-4 text-center">
+        <a role="button" id="previousQuestion" onclick="previousQuestion()" class="btn text-white m-1">
+            <i class="fas fa-arrow-left fa-lg"></i>
+        </a>
+        <a role="button" id="submit" onclick="submitTest()" class="btn text-white m-1">
+        DONE <i class="fas fa-check fa-lg"></i>
+        </a>
+        <a role="button" id="nextQuestion" onclick="nextQuestion()" class="btn text-white m-1">
+            <i class="fas fa-arrow-right fa-lg"></i>
+        </a>
     </div>
 {% endmacro %}
 
