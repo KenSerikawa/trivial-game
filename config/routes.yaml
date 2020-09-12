@@ -1,5 +1,8 @@
-index:
+index: 
     path: /
+    controller: App\Controller\HomeController::index
+quick_game:
+    path: /quickgame
     controller: App\Controller\GameController::index
 new:
     path: /new
