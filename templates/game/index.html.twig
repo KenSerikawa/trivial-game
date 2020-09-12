@@ -47,6 +47,17 @@
         </div>
     </div>
 {% endmacro %}
+{% macro displayScoreArea() %}
+    <div class="container mt-5" id="scoreContainer" style="display:none;">
+        <div class="row">
+            <div class="col-4"></div>
+            <div class="col-4 text-center text-white">
+                <h3>SCORE</h3>
+                <h2 id="score"class="display-2"></h2>
+            </div>
+        </div>
+    </div>
+{% endmacro %}
 {% macro pickAllCorrectAnswers(results) %}
     {% set answerIdCounter = 1 %}
     {% for result in results %}
@@ -62,6 +73,7 @@
 <div class="mt-5 pt-5">
     {{_self.iterate(results)}}
     {{_self.pickAllCorrectAnswers(results)}}
+    {{_self.displayScoreArea()}}
 </div>
 {% endblock %}
 

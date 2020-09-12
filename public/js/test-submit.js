@@ -46,11 +46,12 @@ function readSelectedAnswers() {
 }
 
 function compare(selected, real) {
+    var counter = 0;
     var message
+
     if(selected.equals(real)) {
         message = 'You win! 10/10'
     } else {
-        let counter = 0;
         for (let i = 0; i < real.length; i++) {
             let correct_answer = real[i];
             let selected_answer = selected[i];
@@ -60,6 +61,8 @@ function compare(selected, real) {
         message = 'You lose! ' + counter + '/' + real.length
     }
     alert(message)
+
+    displayResults(counter, real.length)
 }
 
 function readRealAnswers() {
@@ -79,4 +82,10 @@ function getSelected(list) {
             return element.children[0].innerText
         }
     }
+}
+
+function displayResults(score, total) {
+    let proportion = score.toString() + '/' + total.toString()
+    $('#score').html(proportion)
+    $('#scoreContainer').show('slow')
 }
