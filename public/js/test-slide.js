@@ -31,7 +31,7 @@ function previousQuestion() {
     nextQuestion.classList.remove('d-none')
     nextQuestion.classList.add('d-block')
 
-    toggleButtons(nextBlockId)
+    toggleButtons(nextBlockId, array.length)
 
 }
 
@@ -50,10 +50,11 @@ function nextQuestion() {
     nextQuestion.classList.remove('d-none')
     nextQuestion.classList.add('d-block')
 
-    toggleButtons(nextBlockId)
+    toggleButtons(nextBlockId, array.length)
 }
 
-function toggleButtons(id) {
+function toggleButtons(id, n_questions=10) {
+    console.log(n_questions)
     let integer = extractInteger(id)
     let prev = document.getElementById('previousQuestion')
     let next = document.getElementById('nextQuestion')
@@ -62,13 +63,15 @@ function toggleButtons(id) {
         prev.style.display = 'none'
     } else if(integer <= 2) {
         prev.style.display = ''
-    } else if(integer > 9) {
+    } else if(integer > (n_questions - 1)) {
         next.style.display = 'none'
         submit.style.display = ''
     } 
 }
 
-
+function getNumberOfQuestions() {
+    
+}
 
 function extractInteger(str) {
     return str.match(/(\d+)/)[0]
