@@ -24,9 +24,9 @@ Array.prototype.equals = function (array) {
     }       
     return true;
 }
+
 // Hide method from for-in loops
 Object.defineProperty(Array.prototype, "equals", {enumerable: false});
-
 
 function submitTest() {
     let selected = readSelectedAnswers()
@@ -46,12 +46,20 @@ function readSelectedAnswers() {
 }
 
 function compare(selected, real) {
-    console.log(selected, real)
+    var message
     if(selected.equals(real)) {
-        alert('You win!')
+        message = 'You win! 10/10'
     } else {
-        alert('You lose!')
+        let counter = 0;
+        for (let i = 0; i < real.length; i++) {
+            let correct_answer = real[i];
+            let selected_answer = selected[i];
+            if(correct_answer == selected_answer)
+                counter++
+        }
+        message = 'You lose! ' + counter + '/' + real.length
     }
+    alert(message)
 }
 
 function readRealAnswers() {
