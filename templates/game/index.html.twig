@@ -25,16 +25,22 @@
         {% set question_id = question_id + 1 %}
     {% endfor %}
 
-    <div class="mt-4 text-center">
-        <a title="previous" role="button" id="previousQuestion" onclick="previousQuestion()" class="btn text-white m-1">
-            <i class="fas fa-arrow-left fa-lg"></i>
-        </a>
-        <a title="submit quiz" role="button" id="submit" onclick="submitTest()" class="btn text-white m-1">
-        <i class="fas fa-check fa-lg"></i>
-        </a>
-        <a title="next" role="button" id="nextQuestion" onclick="nextQuestion()" class="btn text-white m-1">
-            <i class="fas fa-arrow-right fa-lg"></i>
-        </a>
+    <div class="row mt-4 text-center">
+        <div class="col-4 float-right">
+            <a title="previous" role="button" id="previousQuestion" onclick="previousQuestion()" class="btn text-white m-1">
+                <i class="animated-font-left fas fa-arrow-left fa-lg"></i>
+            </a>
+        </div>
+        <div class="col-4 text-center">
+            <a title="submit quiz" role="button" id="submit" onclick="submitTest()" class="btn text-white m-1">
+            <i class="animated-font-center fas fa-check fa-lg"></i>
+            </a>
+        </div>
+        <div class="col-4 float-right">
+            <a title="next" role="button" id="nextQuestion" onclick="nextQuestion()" class="btn text-white m-1">
+                <i class="animated-font-right fas fa-arrow-right fa-lg"></i>
+            </a>
+        </div>
     </div>
 {% endmacro %}
 
