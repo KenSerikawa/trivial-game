@@ -63,8 +63,11 @@ class GameType extends AbstractType
             ])
             ->add('question_number', NumberType::class, [
                 'attr' => [
+                    'value' => '10',
+                    'min' => '10',
                     'max' => '50', 
-                    'min' => '1'
+                    'pattern' => "[0-9]+",
+                    'title' => 'Write number of questions'
                 ]
             ])
             ->add('ready', SubmitType::class, [
