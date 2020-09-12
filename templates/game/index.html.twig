@@ -25,6 +25,11 @@
         {% set question_id = question_id + 1 %}
     {% endfor %}
 
+    {{_self.displayActionButtons}}
+    
+{% endmacro %}
+
+{% macro displayActionButtons() %}
     <div class="row mt-4 text-center">
         <div class="col-4 float-right">
             <a title="previous" role="button" id="previousQuestion" onclick="previousQuestion()" class="btn text-white m-1">
@@ -43,7 +48,6 @@
         </div>
     </div>
 {% endmacro %}
-
 {% macro pickAllCorrectAnswers(results) %}
     {% set answerIdCounter = 1 %}
     {% for result in results %}
