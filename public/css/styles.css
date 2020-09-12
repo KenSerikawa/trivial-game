@@ -1,4 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+
 html, body {
+    font-family: 'Kumbh Sans', sans-serif !important;
     height: 100%;
     width: 100%;
 }
@@ -20,4 +23,66 @@ body, li {
 input[type=checkbox] {
     width: 25px; 
     height: 25px;
+}
+.animated-font-left, 
+.animated-font-right,
+.animated-font-center {
+    font-size: 3em !important;
+}
+
+.animated-font-right {
+    animation: right 2s linear infinite;
+}
+
+@keyframes right {
+    0% {
+        padding-left: 0px;
+    }
+    33% {
+        padding-left: 50px;
+    }
+    50% {
+        padding-left: 80px;
+    }
+    67% {
+        padding-left: 10px;
+    }
+    100% {
+        padding-left: 10px;
+    }
+}
+
+.animated-font-left {
+    animation: left 2s linear infinite;
+}
+
+@keyframes left {
+    0% {
+        padding-right: 0px;
+    }
+    33% {
+        padding-right: 50px;
+    }
+    50% {
+        padding-right: 80px;
+    }
+    67% {
+        padding-right: 10px;
+    }
+    100% {
+        padding-right: 10px;
+    }
+}
+
+.animated-font-center {
+    color: #a3ff6e;
+    animation: center 2s linear infinite;
+}
+
+@keyframes center {
+    0% {transform: translate(1px, 1px) rotate(0deg); }
+    25% { transform: translate(-1px, -2px) rotate(-1deg); }
+    50% { transform: translate(-3px, 0px) rotate(0deg); }
+    75% { transform: translate(3px, 2px) rotate(-1deg); }
+    100% { transform: translate(1px, -1px) rotate(0deg); }
 }
