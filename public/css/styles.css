@@ -30,6 +30,14 @@ input[type=checkbox] {
     font-size: 3em !important;
 }
 
+.animated-font-right:hover {
+    color:  #a3ff6e;
+}
+
+.animated-font-left:hover {
+    color:  #f78234;
+}
+
 .animated-font-right {
     animation: right 2s linear infinite;
 }
