@@ -4,12 +4,31 @@
 
 {% block body %}
 
-{{form_start(form)}}
-{{ form_row(form.difficulty) }}
-{{ form_row(form.type) }}
-{{ form_row(form.category) }}
-{{ form_row(form.question_number) }}
-{{form_end(form)}}
+<div class="">
+    {{form_start(form)}}
+    <div class="mt-3">
+        {{form_label(form.difficulty)}}
+        <br>
+        {{ form_widget(form.difficulty) }}
+    </div>
+    <div class="mt-3">
+        {{form_label(form.type)}}
+        <br>
+        {{ form_widget(form.type) }}
+    </div>
+    <div class="mt-3">
+        {{form_label(form.category)}}
+        <br>
+        {{ form_widget(form.category) }}
+    </div>
+    <div class="mt-3">
+        {{form_label(form.question_number)}}
+        <br>
+        {{ form_widget(form.question_number) }}
+    </div>
+    <br>
+    {{form_end(form)}}
+</div>
 
 {% endblock %}
 
