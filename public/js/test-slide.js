@@ -1,6 +1,37 @@
 function getAllQuestionBlocks() {
     return $("div[id^='block_']")
 }
+function getCurrentQuestion(id) {
+    let currentBlock = "#" + id.toString()
+
+    return $(currentBlock)
+}
+
+function getCurrentQuestionId(array) {
+    for (let index = 0; index < array.length; index++) {
+        let element = array[index]
+        if(element.classList.contains('d-block')) {
+            return element.id
+        }
+    }
+}
+function isAnswerSelected(block) {
+    let list = block[0].children[0].children[1].children
+    for (let i = 0; i < list.length; i++) {
+        var input = list[i].children[1];
+        if(isChecked(input)) {
+            return true
+        }
+    }
+    return false
+}
+function isChecked(input) {
+    console.log(input.checked)
+    if(input.checked) {
+        return true
+    } 
+    return false
+}
 function displayDynamically() {
     let array = getAllQuestionBlocks()
     array.each(function(index) {
@@ -16,15 +47,8 @@ function displayDynamically() {
 
 function previousQuestion() {
     let array = getAllQuestionBlocks()
-
-    for (let index = 0; index < array.length; index++) {
-        let element = array[index]
-        if(element.classList.contains('d-block')) {
-            element.classList.remove('d-block')
-            element.classList.add('d-none')
-            var currentId = element.id
-        }
-    }
+    let currentId = getCurrentQuestionId(array)
+    toggleBlocks(array)
 
     let nextBlockId = decrement_last(currentId)
     let nextQuestion = document.getElementById(nextBlockId)
@@ -37,24 +61,30 @@ function previousQuestion() {
 
 function nextQuestion() {
     let array = getAllQuestionBlocks()
-    for (let index = 0; index < array.length; index++) {
-       let element = array[index]
-       if(element.classList.contains('d-block')) {
-           element.classList.remove('d-block')
-           element.classList.add('d-none')
-           var currentId = element.id
-       }
+    let currentId = getCurrentQuestionId(array)
+    
+    if(isAnswerSelected(getCurrentQuestion(currentId))) {
+        toggleBlocks(array)
+        let nextBlockId = increment_last(currentId)
+        let nextQuestion = document.getElementById(nextBlockId)
+        nextQuestion.classList.remove('d-none')
+        nextQuestion.classList.add('d-block')
+        
+        toggleButtons(nextBlockId, array.length)
     }
-    let nextBlockId = increment_last(currentId)
-    let nextQuestion = document.getElementById(nextBlockId)
-    nextQuestion.classList.remove('d-none')
-    nextQuestion.classList.add('d-block')
+}
 
-    toggleButtons(nextBlockId, array.length)
+function toggleBlocks(array) {
+    for (let index = 0; index < array.length; index++) {
+        let element = array[index]
+        if(element.classList.contains('d-block')) {
+            element.classList.remove('d-block')
+            element.classList.add('d-none')
+        }
+    }
 }
 
 function toggleButtons(id, n_questions=10) {
-    console.log(n_questions)
     let integer = extractInteger(id)
     let prev = document.getElementById('previousQuestion')
     let next = document.getElementById('nextQuestion')
@@ -67,10 +97,6 @@ function toggleButtons(id, n_questions=10) {
         next.style.display = 'none'
         submit.style.display = ''
     } 
-}
-
-function getNumberOfQuestions() {
-    
 }
 
 function extractInteger(str) {
