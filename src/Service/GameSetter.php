@@ -20,9 +20,40 @@ final class GameSetter
     }
 
     public function __invoke()
-    {
-        $url = 'https://opentdb.com/api.php?amount=' . $this->questions;
+    {  
+        $url = 'https://opentdb.com/api.php?' . $this->urlBuilder();
 
         return json_decode(file_get_contents($url), true);
     }
+
+    public function urlBuilder($params = [])
+    {
+        $questions = $this->ifIsNotAny('amount', $this->questions);
+        $category = $this->ifIsNotAny('category', $this->category);
+        $difficulty = $this->ifIsNotAny('difficulty', $this->difficulty);
+        $type = $this->ifIsNotAny('type', $this->type);
+        $url = http_build_query($questions);
+        $url .= $this->addParameterIfNotEmpty($category);
+        $url .= $this->addParameterIfNotEmpty($difficulty);
+        $url .= $this->addParameterIfNotEmpty($type);
+
+        return $url; 
+    }
+
+    public function addParameterIfNotEmpty($parameter)
+    {
+        if(!empty($parameter)) {
+            return "&" . http_build_query($parameter);
+        } 
+    }
+
+    public function ifIsNotAny(string $key, string $option, array $arr=[])
+    {
+        if($option == 'any') {
+            return  '';
+        }
+        $arr = [$key => $option];
+        return $arr;
+    }
+
 }
