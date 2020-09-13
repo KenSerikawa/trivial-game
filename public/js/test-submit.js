@@ -50,7 +50,7 @@ function compare(selected, real) {
     var message
 
     if(selected.equals(real)) {
-        message = 'You win! 10/10'
+        counter = real.length
     } else {
         for (let i = 0; i < real.length; i++) {
             let correct_answer = real[i];
@@ -58,9 +58,7 @@ function compare(selected, real) {
             if(correct_answer == selected_answer)
                 counter++
         }
-        message = 'You lose! ' + counter + '/' + real.length
     }
-    alert(message)
 
     displayResults(counter, real.length)
 }
