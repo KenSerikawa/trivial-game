@@ -30,7 +30,6 @@ function isAnswerSelected(block) {
 }
 
 function isChecked(input) {
-    console.log(input.checked)
     if(input.checked) {
         return true
     } 
@@ -76,6 +75,12 @@ function nextQuestion() {
         nextQuestion.classList.add('d-block')
         
         toggleButtons(nextBlockId, array.length)
+        let questionIntId = extractInteger(currentId)
+        questionIntId++
+        let question_id = 'question_text_' + questionIntId
+        let question = getQuestion(question_id)
+        console.log(questionIntId, question_id, question)
+        readQuestion(question.innerText)
     }
 }
 
