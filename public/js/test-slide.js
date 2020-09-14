@@ -1,6 +1,7 @@
 function getAllQuestionBlocks() {
     return $("div[id^='block_']")
 }
+
 function getCurrentQuestion(id) {
     let currentBlock = "#" + id.toString()
 
@@ -15,6 +16,7 @@ function getCurrentQuestionId(array) {
         }
     }
 }
+
 function isAnswerSelected(block) {
     let list = block[0].children[0].children[1].children
     for (let i = 0; i < list.length; i++) {
@@ -23,8 +25,10 @@ function isAnswerSelected(block) {
             return true
         }
     }
+    alert('Must choose one answer')
     return false
 }
+
 function isChecked(input) {
     console.log(input.checked)
     if(input.checked) {
@@ -32,6 +36,7 @@ function isChecked(input) {
     } 
     return false
 }
+
 function displayDynamically() {
     let array = getAllQuestionBlocks()
     array.each(function(index) {
@@ -49,14 +54,13 @@ function previousQuestion() {
     let array = getAllQuestionBlocks()
     let currentId = getCurrentQuestionId(array)
     toggleBlocks(array)
-
+    decrementQuestionNumberIndicator(extractInteger(currentId))
     let nextBlockId = decrement_last(currentId)
     let nextQuestion = document.getElementById(nextBlockId)
     nextQuestion.classList.remove('d-none')
     nextQuestion.classList.add('d-block')
 
     toggleButtons(nextBlockId, array.length)
-
 }
 
 function nextQuestion() {
@@ -65,6 +69,7 @@ function nextQuestion() {
     
     if(isAnswerSelected(getCurrentQuestion(currentId))) {
         toggleBlocks(array)
+        incrementQuestionNumberIndicator(extractInteger(currentId))
         let nextBlockId = increment_last(currentId)
         let nextQuestion = document.getElementById(nextBlockId)
         nextQuestion.classList.remove('d-none')
@@ -72,6 +77,20 @@ function nextQuestion() {
         
         toggleButtons(nextBlockId, array.length)
     }
+}
+
+function incrementQuestionNumberIndicator(id) {
+    id++
+    $('#question_number').html(id.toString())
+}
+
+function decrementQuestionNumberIndicator(id) {
+    id--
+    $('#question_number').html(id.toString())
+}
+
+function questionNotAnswered() {
+    
 }
 
 function toggleBlocks(array) {
