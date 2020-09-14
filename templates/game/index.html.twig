@@ -58,7 +58,7 @@
     </div>
 {% endmacro %}
 {% macro displayScoreArea() %}
-    <div class="container mt-5" id="scoreContainer" style="display:none;">
+    <div class="container mt-2" id="scoreContainer" style="display:none;">
         <div class="row">
             <div class="col-4"></div>
             <div class="col-4 text-center text-white">
@@ -102,5 +102,6 @@
 {% block javascripts %}
     <script src="{{asset('/js/checkbox-controls.js')}}"></script>
     <script src="{{asset('/js/test-slide.js')}}"></script>
+    <script src="{{asset('/js/test-resolution.js')}}"></script>
     <script src="{{asset('/js/test-submit.js')}}"></script>
 {% endblock %}
