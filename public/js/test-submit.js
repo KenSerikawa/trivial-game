@@ -28,7 +28,17 @@ Array.prototype.equals = function (array) {
 // Hide method from for-in loops
 Object.defineProperty(Array.prototype, "equals", {enumerable: false});
 
+function getTime() {
+    return document.getElementById('time')
+}
+function addWiggling(element) {
+    element.classList.add('wiggling')
+}
 function submitTest() {
+    clearInterval(interval)
+    var time = getTime()
+    addWiggling(time)
+
     let selected = readSelectedAnswers()
     let real = readRealAnswers()
     compare(selected, real)
@@ -61,6 +71,7 @@ function compare(selected, real) {
     }
 
     displayResults(counter, real.length)
+    offerNewGame()
 }
 
 function readRealAnswers() {
@@ -85,5 +96,9 @@ function getSelected(list) {
 function displayResults(score, total) {
     let proportion = score.toString() + '/' + total.toString()
     $('#score').html(proportion)
-    $('#scoreContainer').show('slow')
+    $('#scoreContainer').slideDown(200)
+}
+
+function offerNewGame() {
+    $('#tryAgainBlock').slideDown(1000)
 }
