@@ -31,6 +31,12 @@
             {% block body %}{% endblock %}
         </div>
         {% block javascripts %}{% endblock %}
+        {# Time script #}
+        <script src="{{asset('/js/clock.js')}}"></script>
+        {# Particles custom script #}
         <script src="{{asset('/js/bg-particles.js')}}"></script>
+        {# Voice player #}
+        <script src="https://code.responsivevoice.org/responsivevoice.js?key=PNVGyaqW"></script>
+        <script src="{{asset('/js/voice-player.js')}}"></script>
     </body>
 </html>
