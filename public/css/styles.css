@@ -87,7 +87,6 @@ input[type=checkbox] {
     animation: center .2s linear infinite;
 }
 
-
 @keyframes center {
     0% {
         transform: translate(1px, 1px) rotate(0deg);
@@ -125,6 +124,9 @@ input[type=checkbox] {
     }
 }
 
+li {
+    background-color: transparent !important;
+}
 li > a {
     color: white;
     text-decoration: none !important;
@@ -134,3 +136,9 @@ li:hover  > a{
     color: black !important;
 }
 
+#particles-js {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: #071a2c9c;
+}
