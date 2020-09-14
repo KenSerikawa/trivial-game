@@ -1,4 +1,9 @@
 {% extends 'base.html.twig' %}
+{% macro displayClock() %}
+    <div id="clockBlock" class="text-white text-center">
+        <span id="time" class="display-4"></span>
+    </div>
+{% endmacro %}
 {% macro displayCurrentQuestion() %}
     <div class="text-white w-100 text-right">
             Question #<span id="question_number">1</span>
@@ -7,7 +12,7 @@
 {% macro displayAnswers(answers, question_id) %}
     <ul id="{{question_id}}" class="list-group">
         {% for answer in answers %}
-            <li class="list-group-item" onclick="checkOne('{{question_id}}', this)">
+            <li class="list-group-item mb-1" onclick="checkOne('{{question_id}}', this)">
                 <span>{{answer}}</span>
                 <input class="float-right question_{{question_id}}"
                     onclick="selectOne('{{question_id}}', this);" type="checkbox">
@@ -20,8 +25,8 @@
     {% for result in results %}
         {% set answers = result.incorrect_answers|merge([result.correct_answer])  %}
         <div id="block_{{question_id}}" class="d-none m-2">
-            <div class="border rounded p-3">
-                <p class="h4 text-white mb-3">
+            <div class="border-ridge rounded p-3">
+                <p id="question_text_{{question_id}}" class="h4 text-white mb-3">
                 {{result.question|corrector}}
                 </p>
                 {{_self.displayAnswers(answers, question_id)}}
@@ -63,6 +68,15 @@
         </div>
     </div>
 {% endmacro %}
+{% macro tryAgainMessage() %}
+    <div id="tryAgainBlock" class="row text-white" style="display:none;">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <h4 class=""><a class="green" href="{{path('quick_game')}}">Try again </a></h4>
+        </div>
+        <div class="col-4"></div>
+    </div>
+{% endmacro %}
 {% macro pickAllCorrectAnswers(results) %}
     {% set answerIdCounter = 1 %}
     {% for result in results %}
@@ -76,10 +90,12 @@
 
 {% block body %}
 <div class="mt-5 pt-5" style="position:relative;">
+    {{_self.displayClock()}}
     {{_self.displayCurrentQuestion()}}
     {{_self.iterate(results)}}
     {{_self.pickAllCorrectAnswers(results)}}
     {{_self.displayScoreArea()}}
+    {{_self.tryAgainMessage()}}
 </div>
 {% endblock %}
 
