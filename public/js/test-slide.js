@@ -47,8 +47,12 @@ function displayDynamically() {
             $('#submit').hide()
         }
     })
-}
 
+    displayTotalNumberOfQuestions(array.length)
+}
+function displayTotalNumberOfQuestions(number) {
+    $('#total_questions').html(number)
+}
 function previousQuestion() {
     let array = getAllQuestionBlocks()
     let currentId = getCurrentQuestionId(array)
