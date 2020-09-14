@@ -12,7 +12,6 @@ function addBackground(option) {
 }
 
 function removeBackground(option) {
-    console.log(option)
     option.classList.remove('bg-white')
     option.classList.remove('text-dark')
     option.classList.remove('rounded')

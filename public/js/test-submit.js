@@ -36,6 +36,7 @@ function addWiggling(element) {
 }
 function submitTest() {
     clearInterval(interval)
+    removeSubmitButton()
     var time = getTime()
     addWiggling(time)
 
@@ -69,7 +70,7 @@ function compare(selected, real) {
                 counter++
         }
     }
-
+    compareResults()
     displayResults(counter, real.length)
     offerNewGame()
 }
@@ -87,12 +88,20 @@ function getSelected(list) {
     for (let i = 0; i < list.children.length; i++) {
         const element = list.children[i];
         if(element.children[1].checked) {
-            console.log(element.children[0].innerText)
             return element.children[0].innerText
         }
     }
 }
 
+
+function getSelectedElement(list) {
+    for (let i = 0; i < list.children.length; i++) {
+        const element = list.children[i];
+        if(element.children[1].checked) {
+            return element.children[0]
+        }
+    }
+}
 function displayResults(score, total) {
     let proportion = score.toString() + '/' + total.toString()
     $('#score').html(proportion)

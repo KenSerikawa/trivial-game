@@ -3,7 +3,6 @@ function getQuestion(id) {
     return document.getElementById(id)
 }
 function readQuestion(question) {
-    console.log(question)
     responsiveVoice.speak(question)
     return
 }

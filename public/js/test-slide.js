@@ -114,6 +114,9 @@ function toggleBlocks(array) {
         }
     }
 }
+function removeSubmitButton() {
+    $('#submit').hide()
+}
 
 function toggleButtons(id, n_questions=10) {
     let integer = extractInteger(id)
