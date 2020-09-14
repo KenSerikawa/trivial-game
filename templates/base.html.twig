@@ -3,7 +3,9 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
+        {% include "favicon.html.twig" %}
         <title>{% block title %}🤔 Trivia!{% endblock %}</title>
+
         {% block stylesheets %}{% endblock %}
         <link rel="stylesheet" href="{{asset('/css/styles.css')}}">
         <link rel="stylesheet" href="{{asset('/css/form.css')}}">
