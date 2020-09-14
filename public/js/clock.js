@@ -19,9 +19,9 @@ function startTimer(duration, display) {
 }
 
 function countTimeDeserved() {
-    // Each question has 30" 
+    // Each question has 15" 
     let questions = getAllQuestionBlocks()
-    return questions.length * 30
+    return questions.length * 15
 }
 
 window.onload = function () {
