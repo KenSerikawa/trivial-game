@@ -19,7 +19,7 @@
     </head>
     <body>
         <div id="particles-js"></div>
-        <div class="container h-75">
+        <div class="container h-90">
             <nav class="navbar">
                 <a class="navbar-brand text-white" href="{{path('index')}}">
                     🤔 Trivia
@@ -30,6 +30,11 @@
             </nav>
             {% block body %}{% endblock %}
         </div>
+        <footer class="footer" style="position:relative;">
+            <div class="container">
+                <span class="text-muted  float-right">Powered by <a class="text-white" href="https://opentdb.com/">OpenTriviaDatabase</a></span>
+            </div>
+        </footer>
         {% block javascripts %}{% endblock %}
         {# Time script #}
         <script src="{{asset('/js/clock.js')}}"></script>
