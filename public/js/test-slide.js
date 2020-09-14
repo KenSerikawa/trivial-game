@@ -44,6 +44,7 @@ function displayDynamically() {
             element.classList.remove('d-none')
             element.classList.add('d-block')
             $('#previousQuestion').hide()
+            $('#nextQuestion').hide()
             $('#submit').hide()
         }
     })
@@ -56,6 +57,7 @@ function displayTotalNumberOfQuestions(number) {
 function previousQuestion() {
     let array = getAllQuestionBlocks()
     let currentId = getCurrentQuestionId(array)
+    displayNextButton()
     toggleBlocks(array)
     decrementQuestionNumberIndicator(extractInteger(currentId))
     let nextBlockId = decrement_last(currentId)
@@ -71,6 +73,7 @@ function nextQuestion() {
     let currentId = getCurrentQuestionId(array)
     
     if(isAnswerSelected(getCurrentQuestion(currentId))) {
+        hideNextButton()
         toggleBlocks(array)
         incrementQuestionNumberIndicator(extractInteger(currentId))
         let nextBlockId = increment_last(currentId)
@@ -83,7 +86,7 @@ function nextQuestion() {
         questionIntId++
         let question_id = 'question_text_' + questionIntId
         let question = getQuestion(question_id)
-        console.log(questionIntId, question_id, question)
+
         readQuestion(question.innerText)
     }
 }
