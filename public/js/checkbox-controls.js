@@ -32,4 +32,15 @@ function checkOne(id, element) {
     let checkbox = element.children[1]
     checkbox.checked = true
     selectOne(id, checkbox)
+    displayNextButton()
+}
+
+function displayNextButton() {
+    if($('#question_number').text() !== $('#total_questions').text()) {
+        $('#nextQuestion').show()
+    }
+}
+
+function hideNextButton() {
+    $('#nextQuestion').hide()
 }
