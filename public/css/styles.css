@@ -1,13 +1,52 @@
 @import url('https://fonts.googleapis.com/css2?family=Kumbh+Sans&display=swap');
+@keyframes wiggle {
+    0% { transform: rotate(1deg); }
+    5% { transform: rotate(-1deg); }
+    10% { transform: rotate(1deg)}
+    15% { transform: rotate(-2deg)}
+    20% { transform: rotate(2deg); }
+    25% { transform: rotate(3deg); }
+    30% { transform: rotate(-3deg); }
+    35% { transform: rotate(4deg); }
+    40% { transform: rotate(-4deg); }
+    45% { transform: rotate(5deg); }
+    50% { transform: rotate(-5deg); }
+    55% { transform: rotate(6deg); }
+    60% { transform: rotate(-5deg); }
+    65% { transform: rotate(5deg); }
+    70% { transform: rotate(-4deg); }
+    75% { transform: rotate(4deg); }
+    80% { transform: rotate(-3deg); }
+    85% { transform: rotate(3deg); }
+    90% { transform: rotate(-2deg); }  
+    95% { transform: rotate(2deg); }
+    100% { transform: rotate(-1deg); }
+}
 
 html, body {
     font-family: 'Kumbh Sans', sans-serif !important;
     height: 100%;
     width: 100%;
 }
+h1, h2, h3, h4 {
+    text-shadow: 1px 3px 1px rgba(150, 150, 150, 0.678);
+}
+a {
+    text-decoration: none !important;
+}
+.border-ridge {
+    border: 6px ridge white !important; 
+}
+.green {
+    color:  #a3ff6e;
+}
 body, li {
     background-color: #333333 !important;
     color: white;
+}
+.wiggling {
+    display: inline-block;
+    animation: wiggle 6s infinite;
 }
 
 .list-group-item {
@@ -82,46 +121,33 @@ input[type=checkbox] {
     }
 }
 
-.animated-font-center {
-    color: #a3ff6e;
-    animation: center .2s linear infinite;
-}
 
 @keyframes center {
-    0% {
-        transform: translate(1px, 1px) rotate(0deg);
-    }
-    25% { 
-        transform: translate(-1px, -2px) rotate(-1deg);
-    }
-    50% { 
-        transform: translate(-3px, 0px) rotate(0deg);
-    }
-    75% { 
-        transform: translate(3px, 2px) rotate(-1deg);
-    }
-    100% { 
-        transform: translate(1px, -1px) rotate(0deg);
-    }
-}
+    0% {color: #a3ff6e;}
+    50% {color:  #2c691a;}
+    100% {color: #a3ff6e;}
 
+}
 
 @keyframes bigger {
     0% {
         transform: scale(1px) rotate(0deg);
     }
-    25% { 
-        transform: scale(2px) rotate(-1deg);
-    }
     50% { 
         transform: scale(3px) rotate(0deg);
-    }
-    75% { 
-        transform: scale(2px) rotate(-1deg);
     }
     100% { 
         transform: scale(1px) rotate(0deg);
     }
+}
+
+.animated-font-center {
+    color: #a3ff6e;
+    animation: center  2s linear infinite;
+}
+
+.animated-font-center:hover {
+    animation: bigger 1s linear;
 }
 
 li {
