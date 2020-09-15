@@ -68,6 +68,27 @@
         </div>
     </div>
 {% endmacro %}
+{% macro saveRecordArea() %}
+<div id="recordForm" class="row" style="display:none;">
+    <div class="col-4">
+    </div>
+    <div class="col-4 text-center">
+    <form method="POST" action="{{path('new_record')}}">
+        <div class="form-group">
+            <label for="nickname">Save it with a name</label>
+            <div class="text-center w-100">
+            <input id="nickname" name="nickname" type="text" class="rounded-left border-0 p-2" placeholder="Nickname">
+            <input id="form_right_answers" name="right_answers" type="hidden">
+            <input id="form_total_questions" name="total_questions" type="hidden">
+            <button type="submit" class="bg-primary text-white rounded-right border-0 p-2">Save</button>
+            </div>
+        </div>
+    </form>
+    </div>
+    <div class="col-4">
+    </div>
+</div>
+{% endmacro %}
 {% macro tryAgainMessage() %}
     <div id="tryAgainBlock" class="row text-white" style="display:none;">
         <div class="col-4"></div>
@@ -95,6 +116,7 @@
     {{_self.iterate(results)}}
     {{_self.pickAllCorrectAnswers(results)}}
     {{_self.displayScoreArea()}}
+    {{_self.saveRecordArea()}}
     {{_self.tryAgainMessage()}}
 </div>
 {% endblock %}
