@@ -106,6 +106,9 @@ function displayResults(score, total) {
     let proportion = score.toString() + '/' + total.toString()
     $('#score').html(proportion)
     $('#scoreContainer').slideDown(200)
+    $('#recordForm').slideDown(500)
+    $('#form_right_answers').val(score)
+    $('#form_total_questions').val(total)
 }
 
 function offerNewGame() {
