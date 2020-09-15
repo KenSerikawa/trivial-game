@@ -1,7 +1,29 @@
 {% extends 'base.html.twig' %}
 
+{% macro displayRecordsTable(results) %}
+<table class="table text-white" style="position:relative;">
+  <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">questions solved</th>
+      <th scope="col">when</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for record in results %}
+    <tr>
+      <th scope="row">{{record.username}}</th>
+      <td>{{record.rightAnswers}} / {{record.totalQuestions}}</td>
+      <td>{{record.date|date()}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endmacro %}
+
 {% block title %}Trivia records!{% endblock %}
 
+
 {% block body %}
-{{dump(results)}}
+{{_self.displayRecordsTable(results)}}
 {% endblock %}
