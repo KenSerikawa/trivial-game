@@ -15,6 +15,10 @@ function startTimer(duration, display) {
         if (--timer < 0) {
             timer = duration;
         }
+        
+        if(minutes == 00 && seconds == 00) {
+            submitTest()
+        }
     }, 1000);
 }
 
