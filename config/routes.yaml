@@ -7,3 +7,6 @@ quick_game:
 new:
     path: /new
     controller: App\Controller\GameController::new
+records:
+    path: /records
+    controller: App\Controller\RecordController::index
