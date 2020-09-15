@@ -10,3 +10,6 @@ new:
 records:
     path: /records
     controller: App\Controller\RecordController::index
+new_record:
+    path: /record/new
+    controller: App\Controller\RecordController::new
